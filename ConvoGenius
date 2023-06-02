@@ -1,0 +1,168 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <map>
+
+int main() {
+    std::string name;
+    std::string response;
+
+    std::cout << "Hello! What's your name? ";
+    std::getline(std::cin, name);
+    std::cout << "Nice to meet you, " << name << "!" << std::endl;
+
+    std::map<std::string, std::string> knowledgeBase; 
+
+    while (true) {
+        std::cout << "How can I assist you today? (Type 'quit' to exit) ";
+        std::getline(std::cin, response);
+
+        if (response == "quit") {
+            break;
+        } else if (response == "hello") {
+            std::cout << "Hello, " << name << "! How can I brighten your day?" << std::endl;
+        } else if (response == "how are you") {
+            std::cout << "I'm doing splendidly! Thanks for asking. How about yourself?" << std::endl;
+        } else if (response == "I'm good") {
+            std::cout << "That's fantastic, " << name << "! Anything exciting happening in your world?" << std::endl;
+        } else if (response == "what is your name") {
+            std::cout << "I am ChatBot, your trusty companion in this digital realm." << std::endl;
+        } else if (response == "tell me a joke") {
+            int randomNum = rand() % 10; 
+
+            switch (randomNum) {
+                case 0:
+                    std::cout << "Why don't scientists trust atoms?" << std::endl;
+                    std::cout << "Because they make up everything!" << std::endl;
+                    break;
+                case 1:
+                    std::cout << "Why did the bicycle fall over?" << std::endl;
+                    std::cout << "Because it was two-tired!" << std::endl;
+                    break;
+                case 2:
+                    std::cout << "What do you call a fish wearing a crown?" << std::endl;
+                    std::cout << "King mackerel!" << std::endl;
+                    break;
+                case 3:
+                    std::cout << "Why don't skeletons fight each other?" << std::endl;
+                    std::cout << "They don't have the guts!" << std::endl;
+                    break;
+                case 4:
+                    std::cout << "Why did the scarecrow win an award?" << std::endl;
+                    std::cout << "Because he was outstanding in his field!" << std::endl;
+                    break;
+                case 5:
+                    std::cout << "Why did the tomato turn red?" << std::endl;
+                    std::cout << "Because it saw the salad dressing!" << std::endl;
+                    break;
+                case 6:
+                    std::cout << "Did you hear about the mathematician who's afraid of negative numbers?" << std::endl;
+                    std::cout << "He will stop at nothing to avoid them!" << std::endl;
+                    break;
+                case 7:
+                    std::cout << "Why don't scientists trust atoms anymore?" << std::endl;
+                    std::cout << "Because they make up everything!" << std::endl;
+                    break;
+                case 8:
+                    std::cout << "Why don't scientists trust atoms?" << std::endl;
+                    std::cout << "Because they make up everything!" << std::endl;
+                    break;
+                case 9:
+                    std::cout << "Why did the golfer bring two pairs of pants?" << std::endl;
+                    std::cout << "In case he got a hole in one!" << std::endl;
+                    break;
+            }
+        } else if (knowledgeBase.find(response) != knowledgeBase.end()) {
+            std::cout << knowledgeBase[response] << std::endl;
+        } else {
+            std::string lowerResponse = response;
+            
+            std::transform(lowerResponse.begin(), lowerResponse.end(), lowerResponse.begin(), ::tolower);
+
+            if (lowerResponse.find("no") != std::string::npos) {
+                int randomNoResponse = rand() % 3; // Generate a random number from 0 to 2
+
+                switch (randomNoResponse) {
+                    case 0:
+                        std::cout << "Oh, I see. No worries! How can I assist you with something else?" << std::endl;
+                        break;
+                    case 1:
+                        std::cout << "No problem! Is there anything else I can help you with?" << std::endl;
+                        break;
+                    case 2:
+                        std::cout << "Alright, no problem at all. Let me know if there's anything else you'd like to talk about." << std::endl;
+                        break;
+                }
+            } else {
+                std::cout << "I'm sorry, I don't know the answer to that. Can you please provide some information or teach me something new about it? ";
+                std::string newKnowledge;
+                std::getline(std::cin, newKnowledge);
+                knowledgeBase[response] = newKnowledge;
+                std::cout << "Thank you for sharing! I've learned something new." << std::endl;
+            }
+        }
+
+        
+        int randomConv = rand() % 5;
+
+        switch (randomConv) {
+            case 0:
+                std::cout << "By the way, have you ever traveled to a different country? I would love to hear about your adventures!" << std::endl;
+                break;
+            case 1:
+                std::cout << "Did you know that elephants are excellent swimmers? It's quite impressive considering their size, don't you think?" << std::endl;
+                break;
+            case 2:
+                std::cout << "If you could have any superpower, what would it be? I've always dreamed of being able to fly like a bird!" << std::endl;
+                break;
+            case 3:
+                std::cout << "What's your favorite book or movie? I'm always on the lookout for new recommendations!" << std::endl;
+                break;
+            case 4:
+                std::cout << "If you could have dinner with any historical figure, who would it be and why? I find history fascinating!" << std::endl;
+                break;
+        }
+    }
+
+    
+    int randomFeature = rand() % 3;
+
+    if (randomFeature == 0) {
+        std::cout << "I must say, " << name << ", you have a fantastic presence. Your positive energy is truly inspiring!" << std::endl;
+    } else if (randomFeature == 1) {
+        std::cout << "You know, " << name << ", your kindness and compassion shine through your words. It's a pleasure chatting with you!" << std::endl;
+    } else {
+        std::cout << "Did you know that you have a unique way of making others feel at ease, " << name << "? Your friendly nature is truly remarkable." << std::endl;
+    }
+
+    std::cout << "Goodbye, " << name << "! I hope you have an absolutely fantastic day ahead!" << std::endl;
+
+    return 0;
+}
+
+
+/*
+The code begins by including the necessary header files for input/output, string manipulation, and random number generation.
+It defines the main() function where the program execution starts.
+Inside the main() function, it declares variables to store the user's name and their responses.
+The program prompts the user to enter their name and reads the input using std::getline() function.
+It greets the user by printing a welcome message along with their name.
+Next, a std::map called knowledgeBase is declared. This map will be used to store the learned knowledge of the chatbot.
+The program enters a while loop that continues until the user enters "quit".
+Inside the loop, the program prompts the user for their input and reads it using std::getline().
+It checks the user's response using a series of if and else if statements to handle specific commands.
+If the user enters "quit", the loop is terminated, and the program moves to the next step.
+If the user enters "hello", the program greets the user with a personalized message.
+If the user asks "how are you", the program responds with a positive message about its well-being and asks about the user's well-being in return.
+If the user replies with "I'm good", the program acknowledges it and asks if anything exciting is happening in the user's world.
+If the user asks "what is your name", the program introduces itself as "ChatBot, your trusty companion in this digital realm."
+If the user asks for a joke, the program generates a random number to select a joke from a list and displays it.
+If the user's input matches any known knowledge in the knowledgeBase, the program retrieves the corresponding information and displays it.
+If the user's input is not recognized, the program checks if it contains the word "no". If it does, the program randomly selects a response to acknowledge the user's response.
+If the user's input is not recognized and does not contain the word "no", the program prompts the user to provide information or teach something new about the topic.
+If the user provides new information, the program stores it in the knowledgeBase and acknowledges that it has learned something new.
+After responding to the user's input, the program engages in a conversation by randomly selecting a conversation topic and displaying it.
+Once the loop is exited, the program selects a random feature to add a heart-touching or friendly message to the user based on their name.
+Finally, the program bids farewell to the user, expressing well wishes and closing the conversation.
+This code creates an interactive chatbot that engages the user in conversations, tells jokes, learns new information, and adds friendly and heart-touching elements to create an appealing and enjoyable experience.
+*/
