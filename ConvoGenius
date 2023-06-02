@@ -1,3 +1,4 @@
+#include <bits/stdc++.h>
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -142,6 +143,7 @@ int main() {
 
 
 /*
+( #include <bits/stdc++.h> ) -> This line includes the entire standard library in a single line.
 The code begins by including the necessary header files for input/output, string manipulation, and random number generation.
 It defines the main() function where the program execution starts.
 Inside the main() function, it declares variables to store the user's name and their responses.
